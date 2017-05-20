@@ -1,0 +1,74 @@
+{{define "newtravel"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+    {{template "navbar" .}}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="well">
+            <h1 class="text-center"> New Travel </h1>
+            <h3>complete the form to share your new travel</h3>
+            <form role="form" class="form" enctype="multipart/form-data" method="POST" id="myform">
+                <div class="form-group">
+                    <label for="Name">Name:</label>
+                    <input type="text" name="name" class="form-control" id="Name">
+                </div>
+                <div class="form-group">
+                    <label for="start">Start:</label>
+                    <input type="text" name="start" class="form-control" id="start">
+                </div>
+                <div class="form-group">
+                    <label for="End">End</label>
+                    <input type="text" name="end" class="form-control" id="End">
+                </div>
+                <div class="form-group">
+                    <label for="Date">Date:</label>
+                    <div class="row">
+                        <div class="col-sm-4">Day:<input type="text" name="Date-day" class="form-control " id="Date"></div>
+                        <div class="col-sm-4">Month:<input type="text" name="Date-month" class="form-control " id="Date"></div>
+                        <div class="col-sm-4">Year:<input type="text" name="Date-year" class="form-control " id="Date"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Time:">Time:</label>
+                    <div class="row">
+                        <div class="col-sm-2">Hour:<input type="text" name="Time-hour" class="form-control " id="Time"></div>
+                        <div class="col-sm-2">Minute:<input type="text" name="Time-minute" class="form-control " id="Time"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="How">How</label>
+                    <input type="text" name="how" class="form-control" id="How">
+                </div>
+                <div class="form-group">
+                    <label for="Company">Company</label>
+                    <input type="text" name="company" class="form-control" id="Company">
+                </div>
+                <div class="form-group">
+                    <label for="Description">Description:</label>
+                    <textarea class="form-control" name="description"rows="5" id="Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Image">Image</label>
+                    <input type="hidden" name="token" value="{{.}}"/>
+                    <input type="file" name="image" class="" id="Image">
+                </div>
+
+                <div class="col-sm-6"><a href="/user" class="btn btn-warning btn-block btn-lg">cancel</a></div>
+                <div class="col-sm-6"><button type="submit" class="btn btn-success btn-block btn-lg">Share</button></div>
+            </form>
+        </div>
+    </div>
+    <script>
+    </script>
+
+
+</body>
+{{template "footer" .}}
+
+</html>
+{{end}}

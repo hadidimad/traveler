@@ -1,0 +1,46 @@
+{{define "travelinfo"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+    {{template "navbar" .}}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        {{with .travel}}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="text-center">
+                        <h1>Travel info</h1>
+                    </div>
+                    <h2>Name: {{.Name}}</h2>
+                    <h2>from {{.Start}} to {{.End}}</h2>
+                    <h2>Date: {{with .Date}}{{.Day}}/{{.Month}}/{{.Year}} {{end}}</h2>
+                    <h2>Time: {{with .Time}}{{.Hour}}:{{.Minute}}{{end}}</h2>
+                    <h2>How: {{.How}}</h2>
+                    <h2>Company: {{.Company}}</h2>
+                    <h2>Shared by : {{.ShareBy}}</h2>
+                    <h2>Description:<br> {{.Description}}</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="text-center">
+                        <h1>{{.Name}}</h1>
+                    </div>
+                    <img class="img-circle img-responsive" style="width:100%" src={{.ID | getTravelsImage}}>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+
+</body>
+{{template "footer" .}}
+
+</html>
+{{end}}

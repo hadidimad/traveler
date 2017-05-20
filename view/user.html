@@ -1,0 +1,68 @@
+{{define "user"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+    {{template "navbar" .}}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        {{with .onuser}}
+        <div class="row">
+            <div class="text-center">
+                <h1>User Profile</h1>
+            </div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <h2>Username: {{.Username}}</h2>
+                    <h2>E-mail: {{.Email}}</h2>
+
+                    <div class="text-right">
+                        <a class="btn btn-danger btn-lg" href="/userdelete"><span class="glyphicon glyphicon-trash"></span>Delete User</a>
+                        <a class="btn btn-info btn-lg" href="/useredit"><span class="glyphicon glyphicon-pencil"></span>edit User</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="text-center">
+                        <h1>{{.Username}}</h1>
+                    </div>
+                    <img class="img-circle img-responsive" style="width:100%" src={{.ID | getUserImage}}>
+                </div>
+            </div>
+        </div>
+        {{end}}
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Shared Travels
+                    <div class="text-right"> <a class="btn btn-success btn-lg" href="/newtravel"><span class="glyphicon glyphicon-pencil"></span>New travel</a></div>
+                </h1>
+                {{range .usertravels}}
+                <div class='col-sm-6'>
+                    <div class='well well-sm travelsWell'>
+                        <div class='text-center'>
+                            <h1>{{.Name}}</h1>
+                        </div><img class='img-responsive img-circle' style='width:100%' src={{.ID | getTravelsImage}}>
+                        <h4>From {{.Start}} to {{.End}}</h4>
+                        <div class='text-right'>
+                            <a class='btn btn-danger btn-lg' href={{.ID | getTravelDeleteLink}}><span class="glyphicon glyphicon-trash"></span>Delete</a>
+                            <a class='btn btn-success btn-lg' href={{.ID | getTravelEditLink}}><span class="glyphicon glyphicon-pencil"></span>edit</a>
+                            <a class='btn btn-info btn-lg' href={{.ID | getTravelInfoLink}}>more</a>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+{{template "footer" .}}
+
+</html>
+{{end}}

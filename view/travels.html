@@ -1,0 +1,36 @@
+{{define "travels"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+    {{template "navbar" .}}
+    <br>
+    <br>
+    <br>
+    <div class="text-center">
+        <div style="font-size:120px;"> travels </div>
+        <h2>see latest travels here</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            {{range .travels}}
+            <div class='col-sm-6'>
+                <div class='well well-sm travelsWell'>
+                    <div class='text-center'>
+                        <h1>{{.Name}}</h1>
+                    </div><img class='img-responsive img-circle' style='width:100%' src={{.ID | getTravelsImage}}>
+                    <h4>From {{.Start}} to {{.End}}</h4>
+                    <div class='text-right'><a class='btn btn-info btn-lg' href={{.ID | getTravelInfoLink}}>more</a></div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+
+
+</body>
+{{template "footer" .}}
+
+</html>
+{{end}}
