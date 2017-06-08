@@ -18,20 +18,25 @@
                     </div>
                     <h2>Name: {{.Name}}</h2>
                     <h2>from {{.Start}} to {{.End}}</h2>
-                    <h2>Date: {{with .Date}}{{.Day}}/{{.Month}}/{{.Year}} {{end}}</h2>
-                    <h2>Time: {{with .Time}}{{.Hour}}:{{.Minute}}{{end}}</h2>
+                    <h2>Date: {{.Date| getday}}/{{.Date| getmonth}}/{{.Date| getyear}}</h2>
+                    <h2>Time: {{.Date| gethour}}:{{.Date| getmin}}</h2>
                     <h2>How: {{.How}}</h2>
                     <h2>Company: {{.Company}}</h2>
-                    <h2>Shared by : {{.ShareBy}}</h2>
+                    <h2>Shared by : <a href={{.ShareBy | getUserInfoLink}}>{{.ShareBy}}</a></h2>
                     <h2>Description:<br> {{.Description}}</h2>
+                    {{end}} {{if .isLogin}} {{if .liked}} 
+                    {{with .travel}}<a class="btn btn-danger btn-lg btn-block" href={{ .ID | getTravelUnLikeLink}}><span class="glyphicon glyphicon-thumbs-down" ></span>UnLike</a>                    {{end}}{{else}} 
+                    {{with .travel}}<a class="btn btn-danger btn-lg btn-block" href={{ .ID | getTravelLikeLink}}><span class="glyphicon glyphicon-thumbs-up" ></span>Like</a>                    {{end}} {{end}} {{end}}
                 </div>
             </div>
+            {{with .travel}}
             <div class="col-sm-6">
                 <div class="well">
                     <div class="text-center">
                         <h1>{{.Name}}</h1>
                     </div>
                     <img class="img-circle img-responsive" style="width:100%" src={{.ID | getTravelsImage}}>
+                    <h2 style="color:red" >{{.Likes}} likes</h2>
                 </div>
             </div>
         </div>

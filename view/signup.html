@@ -18,7 +18,7 @@
             <form role="form" class="form" enctype="multipart/form-data" method="POST">
                 <div class="form-group">
                     <label for="userName">UserName:</label>
-                    <input type="text" name="username" class="form-control" id="userName"> {{if .userinvalid}}
+                    <input type="text" name="username" class="form-control" id="userName"> {{if .invalidUsername}}
                     <div class="alert alert-danger">invalid user name</div>
                     {{end}} {{if .takenusername}}
                     <div class="alert alert-danger">username has been taken</div>

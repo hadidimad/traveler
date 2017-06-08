@@ -1,0 +1,59 @@
+{{define "userinfo"}}
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+    {{template "navbar" .}}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        {{with .userInfo}}
+        <div class="row">
+            <div class="text-center">
+                <h1>User Info</h1>
+            </div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <h2>Username: {{.Username}}</h2>
+                    <h2>E-mail: {{.Email}}</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="text-center">
+                        <h1>{{.Username}}</h1>
+                    </div>
+                    <img class="img-circle img-responsive" style="width:100%" src={{.ID | getUserImage}}>
+                </div>
+            </div>
+        </div>
+        {{end}}
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Shared Travels</h1>
+                {{range .usertravels}}
+                <div class='col-sm-6'>
+                    <div class='well well-sm travelsWell'>
+                        <div class='text-center'>
+                            <h1>{{.Name}}</h1>
+                        </div><img class='img-responsive img-circle' style='width:100%' src={{.ID | getTravelsImage}}>
+                        <h4>From {{.Start}} to {{.End}}</h4>
+                        <div class='text-right'>
+                            <a class='btn btn-info btn-lg' href={{.ID | getTravelInfoLink}}>more</a>
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+{{template "footer" .}}
+
+</html>
+{{end}}

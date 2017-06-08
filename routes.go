@@ -86,4 +86,19 @@ var routes = []Route{
 		"GET",
 		deleteTravelGetHandler,
 	},
+	{
+		"/userinfo",
+		"GET",
+		userInfoGetHandler,
+	},
+	{
+		"/travellike",
+		"GET",
+		travelLikeGetHandler,
+	},
+	{
+		"/travelunlike",
+		"GET",
+		travelUnLikeGetHandler,
+	},
 }
